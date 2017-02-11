@@ -62,14 +62,26 @@
 
                 var element = document.createElement("article");
                 element.innerText = "My new <article> element";
-                element.setAttributeNode()
+                //element.setAttributeNode()
 
                 var outerDiv = document.getElementById("outerDiv");
                 outerDiv.appendChild(element);
 
-                var element2 = document.getElementById("outerDiv").insertBefore(document.createElement("article"),document.getElementById("innerDiv"));
-                element.innerText = "My new <article> element";
 
+                var element2 = document.getElementById("outerDiv").insertBefore(document.createElement("article"),document.getElementById("innerDiv"));
+                element2.innerText = "My new <article> element2";
+
+                var aside3 = document.createElement("aside");
+                aside3.innerText = "The is an aside";
+
+                var inserthere = document.getElementById("innerDiv");
+                inserthere.insertBefore(aside3);
+
+                var aside4 = document.createElement("aside");
+                aside4.innerText = "This an aside 4";
+
+                var inserthereT = document.getElementsByTagName("Table")[0];
+                inserthereT.insertBefore(aside4);
 
             }
             catch (exception)
