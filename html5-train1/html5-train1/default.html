@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div id="outerDiv">
+        <p class="main para">Main Paragraph</p>
+        <ul>
+            <li>first list item</li>
+            <li>second list item</li>
+            <li>third list item</li>
+            <li>fourth list item</li>
+        </ul>
+        <div id="innerDiv">
+            <p class="subPara" id="P1">Paragraph One</p>
+            <p class="subPara" id="P2">Paragraph Two</p>
+            <p class="subPara" id="P3">Paragraph Three</p>
+            <p class="subPara" id="P4">Paragraph Four</p>
+        </div>
+        <table>
+            <tr>
+                <td>row1</td>
+            </tr>
+            <tr>
+                <td>row2</td>
+            </tr>
+            <tr>
+                <td>row3</td>
+            </tr>
+            <tr>
+                <td>row4</td>
+            </tr>
+            <tr>
+                <td>row5</td>
+            </tr>
+        </table>
+        <input type="text" /><input type="submit" />
+    </div>
+    <script>
+        window.onload = function () {
+//            var element = document.getElementById("outerDiv");
+//            alert(element.innerText)
+
+//            var paragraphs = document.getElementsByClassName("subPara");
+//            alert("<p> elements with a class subPara:" + paragraphs.length);
+
+//            var element2 = document.querySelectorAll("p");
+            //            alert(element2.length);
+
+
+
+            try{
+                //var element3 = document.getElementById("innerDiv");
+                //alert(element3.innerHTML);
+                //document.removeChild(element3);
+
+                //var afterRemove = document.getElementById("innerDiv");
+                //alert("afterRemove:" + afterRemove);
+
+                var element = document.createElement("article");
+                element.innerText = "My new <article> element";
+                element.setAttributeNode()
+
+                var outerDiv = document.getElementById("outerDiv");
+                outerDiv.appendChild(element);
+
+                var element2 = document.getElementById("outerDiv").insertBefore(document.createElement("article"),document.getElementById("innerDiv"));
+                element.innerText = "My new <article> element";
+
+
+            }
+            catch (exception)
+            {
+                alert("error" + exception.number + ":" + exception.message);
+            }
+
+        }
+    </script>
+</body>
+</html>
