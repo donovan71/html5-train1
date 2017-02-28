@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+        #outer {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        #middle {
+            width: 50%;
+            height: 50%;
+            background-color: orange;
+            position: relative;
+            top: 25%;
+            left: 25%;
+        }
+
+        #inner {
+            width: 50%;
+            height: 50%;
+            background-color: green;
+            position: relative;
+            top: 25%;
+            left: 25%;
+        }
+        #btnClear{
+            position: relative;
+        }
+
+    </style>
+   
+</head>
+<body id="bod">
+<div id="outer">
+    <div id="middle">
+        <div id="inner"></div>
+    </div>
+</div>
+   <input type="button" id="btnClear" value="clear" />
+   <ol id="eventOrder"></ol>
+    <label for="text1">text1</label><input id="text1" type="text"/><br/>
+    <label for="text2">text2</label><input id="text2" type="text" />
+    <script>
+
+        window.onload = function () {
+            
+            document.getElementById("outer").addEventListener("click", outerClick, true);
+            document.getElementById("middle").addEventListener("click", middleClick, true);
+            document.getElementById("inner").addEventListener("click", innerClick,true);
+            document.getElementById("btnClear").addEventListener("click", clearButton, false);
+            document.getElementById("text2").focus();
+            document.getElementById("text2").addEventListener("keypress", keyPress, false);
+        };
+
+        function keyPress() {
+            var pressed = window.event.keyCode;
+            alert("you pressed " + pressed);
+        };
+
+        function outerClick() {
+            var outer = document.createElement("li");
+            outer.id = "liOuter";
+            outer.innerText = "Outer";
+            document.getElementById("eventOrder").appendChild(outer);
+        };
+        function  middleClick() {
+            var middle = document.createElement("li");
+            middle.id = "liMiddle";
+            middle.innerText = "Middle";
+            document.getElementById("eventOrder").appendChild(middle);
+
+        };
+        function innerClick() {
+            var inner = document.createElement("li");
+            inner.id = "liInner";
+            inner.innerText = "Inner";
+            document.getElementById("eventOrder").appendChild(inner);
+
+        };
+        function clearButton() {
+            var ol = document.createElement("ol");
+            ol.id = "eventOrder";
+            document.getElementById("bod").replaceChild(ol, document.getElementById("eventOrder"));
+        };
+    </script> 
+</body>
+</html>

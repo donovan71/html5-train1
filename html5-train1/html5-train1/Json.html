@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+        canvas{
+            border : 2px solid black;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="test"></div>
+
+    <audio id="sample">
+        <source src="/resources/sample.ogg" type="audio/ogg" />
+        <source src="/resources/sample.mp3" type="audio/mp3" />
+                <p>Your browser doesn't support HTML 5 audio</p>
+    </audio>
+
+    <canvas id="scribble" width="200px" height="200px"></canvas>
+
+    <input type="button" id="play" onclick="play()" value="Play"/>
+    <input type="button" id="pause" onclick="pause()" value="Pause">
+    <input type="button" id="draw"  onclick="draw()" value="Draw"/>
+
+    <script>
+        this.window.onload = function()
+        {
+            var person = { "name": "John", "Age": "10", "city": "Bristol" };
+            var test = document.getElementById("test");
+            test.innerHTML = "<p>" + person.name + "</p>";
+
+
+            for (var x in person) {
+                test.innerHTML += "<p>" + person[x] + "</p>";
+                test.innerHTML += "<p>" + x + "</p>";
+            }~
+
+            //here we create and element on the page, but save it in a variable so we have a reference we can use to set addional properties.
+            var insDave = test.insertBefore(document.createElement("p"), test.firstChild);
+            insDave.innerText = "Dave";
+            insDave.setAttribute("Class", "Name");
+            insDave.setAttribute("Id", "sDave");
+
+            var upDave = document.getElementById("sDave");
+            upDave.innerHTML += " Donovan";
+
+            var newpara = document.createElement("p");
+            newpara.innerText = "Norman"
+            newpara.setAttribute("id", "sNorman");
+
+            test.appendChild(newpara);
+            
+     
+
+// didn;t work just replace with a paragraph tag
+           //var newCH = test.replaceChild(document.createElement("p"),insDave);
+           //newCH.innerText = "Replaced!";
+           //newCH.setAttribute("id", "replaced");
+
+
+            // didn;t work just replace with a paragraph tag
+            var newCH = document.createElement("p");
+            newCH.setAttribute("id", "replaced");
+            newCH.innerText = "Replaced!"
+            test.replaceChild( newCH, insDave);
+
+
+
+
+
+
+        }
+
+        function play()
+        {
+            var audio = document.getElementById("sample");
+            audio.play();
+        }
+        function pause()
+        {
+            var audio = document.getElementById("sample");
+            audio.pause();
+        }
+        function draw() {
+            var scribble = document.getElementById("scribble");
+            var context = scribble.getContext("2d");
+
+            context.beginPath();
+            context.moveTo(5, 5);
+            context.lineTo(5, 150);
+            context.lineTo(150, 150);
+            context.lineTo(150, 5);
+            context.lineTo(5, 5);
+            context.lineWidth = 10;
+            context.lineCap = "round";
+            context.strokeStyle = "red";
+            context.fillStyle = "green";
+            context.fill();
+             context.stroke();
+
+
+            context.font = "Arial";
+            context.strokeText("Hello World", 150, 75);
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(175, 175);
+            context.arc(175, 175, 5, 0, 2 * Math.PI, true);
+            context.lineWidth = 10;
+            context.stroke();
+
+        }
+        
+    </script>
+</body>
+</html>
